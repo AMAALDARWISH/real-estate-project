@@ -1,0 +1,269 @@
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  background: #f4f7fc;
+  color: #1f2937;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hero-section {
+  padding: 40px 0 10px;
+}
+
+.hero-box {
+  background: linear-gradient(135deg, #0d6efd 0%, #3a86ff 100%);
+  border-radius: 28px;
+  padding: 40px 30px;
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(13, 110, 253, 0.18);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.hero-text {
+  margin: 0;
+  font-size: 1rem;
+  max-width: 700px;
+  opacity: 0.95;
+}
+
+.filter-box {
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e8eef7;
+}
+
+.custom-input {
+  min-height: 48px;
+  border-radius: 14px;
+  border: 1px solid #d9e2f2;
+}
+
+.custom-input:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+.btn-main {
+  min-height: 48px;
+  border-radius: 14px;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+}
+
+.btn-main:hover {
+  background: #0b5ed7;
+  color: #fff;
+}
+
+.section-title {
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.results-box {
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+}
+
+.results-box span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  background: #0d6efd;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.governorate-card {
+  border: none;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+.governorate-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.governorate-card img {
+  height: 230px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.gov-region {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #0d6efd;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.gov-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.gov-en {
+  color: #6b7280;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.gov-desc {
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.info-pill {
+  display: inline-block;
+  background: #f8fafc;
+  border: 1px solid #e5eaf3;
+  color: #334155;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin: 0 0 8px 8px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.card-actions .btn {
+  border-radius: 12px;
+  font-weight: 700;
+  min-height: 44px;
+}
+
+.empty-box {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  border: 1px dashed #cdd8ea;
+}
+
+.details-wrapper {
+  background: #fff;
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e7eef8;
+}
+
+.details-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.details-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #1f2937;
+}
+
+.details-en {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.details-item {
+  background: #f8fbff;
+  border: 1px solid #e4edf9;
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.details-item strong {
+  color: #0f172a;
+}
+
+.details-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.details-actions .btn {
+  border-radius: 12px;
+  font-weight: 700;
+  min-height: 46px;
+  padding: 10px 18px;
+}
+
+.not-found-box {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .hero-box {
+    padding: 28px 20px;
+  }
+
+  .governorate-card img {
+    height: 200px;
+  }
+
+  .details-title {
+    font-size: 1.6rem;
+  }
+}
+

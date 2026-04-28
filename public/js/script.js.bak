@@ -1,0 +1,111 @@
+/**
+ * Egypt Real Estate Dashboard - Integrated Team Version
+ * Integration by: EL SAMURAI & Team
+ */
+
+let forecastChart = null, pieChart = null;
+let map = null;
+
+// دالة تحديث الداشبورد من الـ APIs بتاعة الفريق
+window.updateDashboard = async function() {
+    const selCity = document.getElementById('cityFilter')?.value || 'all';
+    const selYear = document.getElementById('yearFilter')?.value || '';
+
+    // تجهيز الـ URL بناءً على الـ API Routes بتاعة الفريق (api.php)
+    const baseUrl = '/api/v1/analytics/charts';
+    const params = `?city=${selCity === 'all' ? '' : selCity}&year=${selYear}`;
+
+    try {
+        // 1. جلب بيانات الـ Market Share (شغلهم في الخطوة 3)
+        const shareRes = await fetch(`${baseUrl}/market-share`);
+        const shareData = await shareRes.json();
+
+        // 2. جلب بيانات التوقعات Forecast (الـ Ranking Logic بتاعهم)
+        const forecastRes = await fetch(`${baseUrl}/forecast${params}`);
+        const forecastData = await forecastRes.json();
+
+        // 3. تحديث العدادات من الـ Overview Report
+        const reportRes = await fetch(`/api/v1/analytics/reports/overview${params}`);
+        const reportData = await reportRes.json();
+
+        if (reportData.status === 'success') {
+            document.getElementById('avgPrice').innerText = reportData.summary.overall_avg.toLocaleString() + " ج";
+            document.getElementById('totalTx').innerText = reportData.summary.total_cities; // أو عدد العقارات الكلي
+            
+            // تحديث الرسم البياني للتوقعات (Forecast)
+            renderForecastChart(forecastData);
+            
+            // تحديث رسمة الاستحواذ (Market Share)
+            renderPieChart(shareData);
+        }
+    } catch (error) {
+        console.error("Integration Error:", error);
+    }
+};
+
+// رسم التوقعات بناءً على الـ Logic بتاعهم (نمو 5%)
+function renderForecastChart(apiData) {
+    const ctx = document.getElementById('forecastChart');
+    if (!ctx || !apiData.labels) return;
+
+    if (forecastChart) forecastChart.destroy();
+    forecastChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: apiData.labels,
+            datasets: [{
+                label: 'متوسط السعر المتوقع (جنية)',
+                data: apiData.data,
+                borderColor: '#0d6efd',
+                backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { title: { display: true, text: apiData.insight } }
+        }
+    });
+}
+
+// رسم نصيب السوق (Market Share) من الـ API
+function renderPieChart(apiData) {
+    const ctx = document.getElementById('pieChart');
+    if (!ctx || !apiData.labels) return;
+
+    if (pieChart) pieChart.destroy();
+    pieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: apiData.labels,
+            datasets: [{
+                data: apiData.data,
+                backgroundColor: ['#0d6efd', '#20c997', '#ffc107', '#dc3545', '#6610f2']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { title: { display: true, text: apiData.insight } }
+        }
+    });
+}
+
+// تشغيل عند التحميل وربط الفلاتر
+document.addEventListener('DOMContentLoaded', () => {
+    // ربط فلتر السنة
+    document.getElementById('yearFilter').addEventListener('change', window.updateDashboard);
+    
+    // ربط فلتر المحافظات (الدروب داون)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('city-item')) {
+            e.preventDefault();
+            const city = e.target.dataset.city;
+            document.getElementById('cityFilter').value = city;
+            document.getElementById('cityDropdown').innerText = e.target.innerText;
+            window.updateDashboard();
+        }
+    });
+
+    window.updateDashboard();
+});
