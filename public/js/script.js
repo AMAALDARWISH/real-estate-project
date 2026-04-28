@@ -21,7 +21,7 @@ window.updateDashboard = async function() {
         const forecastData = await forecastRes.json();
 
         // 3. جلب بيانات العقارات لكل مدينة (الرسم البياني المفقود)
-        const barRes = await fetch(`${baseUrl}/properties-per-city${params}`);
+        const barRes = await fetch(`/${baseUrl}/properties-per-city${params}`);
         const barData = await barRes.json();
 
         // 4. تحديث العدادات من الـ Overview Report
